@@ -1,19 +1,17 @@
+;; -*- lexical-binding: t; -*-
 ;;; modes-config.el --- Programming Modes and Editor Behavior Configuration
 
-;; -----------------------------------------------------------------------
-;; Company
-;; -----------------------------------------------------------------------
+;; EditorConfig
+(editorconfig-mode 1)
 
+;; Company
 (use-package company
   :ensure t
   :defer t
-  :custom
-  ;; Settings to make completion feel more responsive
-  (company-minimum-prefix-length 1)     ; Start completing after 1 character
-  (company-idle-delay 0.0)              ; Show suggestions immediately
-  (company-tooltip-align-annotations t) ; Align hints (like types) to the right
+
   :hook 
   (after-init . global-company-mode)
+
   :bind
   ;; Helpful shortcuts when the completion menu is open
   (:map company-active-map
@@ -27,6 +25,7 @@
 
 (use-package delsel
   :ensure nil ; Built-in to Emacs
+  :defer t
   :hook (after-init . delete-selection-mode))
 
 (provide 'modes-config)

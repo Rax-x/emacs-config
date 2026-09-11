@@ -1,8 +1,5 @@
+;; -*- lexical-binding: t; -*-
 ;;; keybindings-config.el --- Personal Keybindings and Editing Utilities
-
-;; -----------------------------------------------------------------------
-;; Line Manipulation
-;; -----------------------------------------------------------------------
 
 (defun mark-line ()
   "Select the current line from beginning to end and activate the region."
@@ -24,10 +21,6 @@
   (transpose-lines 1)
   (forward-line -1))
 
-;; -----------------------------------------------------------------------
-;; Web & Browser Integration
-;; -----------------------------------------------------------------------
-
 (defun open-url-in-browser (start end)
   "Open the selected text between START and END in the default browser.
 If the selection lacks a protocol (e.g., 'google.com'), it prepends 'https://'."
@@ -43,22 +36,13 @@ If the selection lacks a protocol (e.g., 'google.com'), it prepends 'https://'."
       (message "Opening: %s" url)
       (browse-url url))))
 
-;; -----------------------------------------------------------------------
-;; Global Keybindings
-;; -----------------------------------------------------------------------
-
-;; Window Navigation
-(global-set-key (kbd "C-M-<up>") 'windmove-up)
-(global-set-key (kbd "C-M-<down>") 'windmove-down)
-(global-set-key (kbd "C-M-<left>") 'windmove-left)
-(global-set-key (kbd "C-M-<right>") 'windmove-right)
 
 ;; Line Editing
-(global-set-key (kbd "M-<up>") 'move-line-up)
-(global-set-key (kbd "M-<down>") 'move-line-down)
-(global-set-key (kbd "C-l") 'mark-line)
+(keymap-global-set "M-<up>" 'move-line-up)
+(keymap-global-set "M-<down>" 'move-line-down)
+(keymap-global-set "C-l" 'mark-line)
 
 ;; Utilities
-(global-set-key (kbd "<f5>") 'open-url-in-browser)
+(keymap-global-set "C-c o" 'open-url-in-browser)
 
 (provide 'keybindings-config)
